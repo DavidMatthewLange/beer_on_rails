@@ -1,0 +1,28 @@
+Model: Company (relaated to table called companies)
+  - id (auto inc, PK)
+  - name:string
+  - created-at:timestamp
+  - updated_at:timestamp
+
+Model: Beer (related to a table called Beers)
+  - id (auto inc, PK)
+  - name:string
+  - price:decimal
+  - description:text
+  - company_id:int (FK for company)
+  - created-at:timestamp
+  - updated_at:timestamp
+
+Routes:
+  - GET /companies => companies#index (List all companies) collection route
+  - GET /companies/:id => companies#show (Show a single company) member route
+
+Controllers:
+  - Companies
+    - action: index
+    - action: show
+
+Views:
+  - CompaniesViews
+  - view: index => app/views/companies/index.html.erb
+  - view: show => app/view/companies/show.html.erb
